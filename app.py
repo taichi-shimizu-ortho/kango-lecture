@@ -17,6 +17,10 @@ if os.path.exists(default_file):
     for i, q in enumerate(quizzes):
         q_id = q.get('id', i + 1)
         st.subheader(f"Q{q_id}. {q['question']}")
+        # ★ ここを追加：sub_questions（a, b, c...）があれば表示する
+        if 'sub_questions' in q:
+            for sub in q['sub_questions']:
+                st.write(sub)
         user_choice = st.radio("選択肢を選んでください", q['options'], key=f"q{q_id}")
         
         if st.button(f"Q{q_id}の答え合わせ", key=f"btn{q_id}"):
@@ -29,4 +33,5 @@ if os.path.exists(default_file):
                 st.info(f"💡 解説: {q['explanation']}")
         st.markdown("---")
 else:
+
     st.error(f"指定された問題ファイル '{default_file}' が見つかりません。")
