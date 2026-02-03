@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import os
 
-st.set_page_config(page_title="講義復習クイズ")
+st.set_page_config(page_title="2/5講義復習クイズ")
 
 # URLのパラメータを取得（例: ?file=questions15-21.json）
 query_params = st.query_params
@@ -12,7 +12,7 @@ if os.path.exists(default_file):
     with open(default_file, 'r', encoding='utf-8') as f:
         quizzes = json.load(f)
     
-    st.title(f"📖 クイズ: {default_file}")
+    st.title("📖 2/5講義復習クイズ")
 
     for i, q in enumerate(quizzes):
         q_id = q.get('id', i + 1)
